@@ -92,6 +92,11 @@ h2 span{color:var(--gold)}
 </style>
 </head>
 <body>
+<div id="introAd" style="position:fixed;inset:0;z-index:99999;background:#05070e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px">
+<div style="font-size:clamp(20px,5vw,30px);font-weight:900;background:linear-gradient(90deg,#ffd700,#ff9a3c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-align:center">🎁 Loading bonuses…</div>
+<div style="width:100%;max-width:760px"><!-- BEGIN AADS AD UNIT 2456651 --> <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;"> <iframe data-aa='2456651' src='//acceptable.a-ads.com/2456651/?size=Adaptive' style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe> </div> <!-- END AADS AD UNIT 2456651 --></div>
+<button onclick="this.parentElement.remove()" style="background:linear-gradient(90deg,#ffd700,#ff9a3c);color:#111;font-weight:900;padding:12px 30px;border-radius:14px;border:none;font-size:15px;cursor:pointer">Continue →</button>
+</div>
 <canvas id="bg"></canvas>
 <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
 <div class="wrap">
@@ -200,7 +205,7 @@ CATS.forEach(c=>{
  cats.innerHTML+=`<a href="#cat-${c.id}" data-cat="${c.id}">${c.em} ${c.name}</a>`;
  let h=`<h2 class="cat-title" id="cat-${c.id}"><span class="icn">${c.em}</span>${c.name}<span class="cnt">${c.items.length}</span><span class="bar"></span></h2><div class="grid">`;
  c.items.forEach(i=>{
-  h+=`<div class="card reveal${i.featured?' featured':''}" data-n="${(i.name+' '+i.bonus+' '+i.meta).toLowerCase()}"><div class="info"><h3><span class="em">${i.em}</span>${i.name}</h3><div class="bonus">${i.bonus}</div><div class="meta">${i.meta}</div>${i.code?`<div class="meta" style="margin-top:9px">Code: <span class="code" onclick="cp('${i.code}')">${i.code}</span></div>`:''}</div><a class="btn" href="${i.url}" target="_blank" rel="noopener" onclick="conf()">Claim →</a></div>`;
+  h+=`<div class="card reveal${i.featured?' featured':''}" data-n="${(i.name+' '+i.bonus+' '+i.meta).toLowerCase()}"><div class="info"><h3><span class="em">${i.em}</span>${i.name}</h3><div class="bonus">${i.bonus}</div><div class="meta">${i.meta}</div>${i.code?`<div class="meta" style="margin-top:9px">Code: <span class="code" onclick="cp('${i.code}')">${i.code}</span></div>`:''}</div><a class="btn" href="go.html?to=${encodeURIComponent(i.url)}" target="_blank" rel="noopener" onclick="conf()">Claim →</a></div>`;
  });
  h+='</div>';secs.innerHTML+=h;
 });
@@ -230,6 +235,8 @@ const ps=[...Array(70)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*inn
 (function loop(){cx.clearRect(0,0,W,H);ps.forEach(p=>{p.y-=p.v;if(p.y<-5){p.y=H+5;p.x=Math.random()*W}cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fillStyle=p.g?`rgba(255,215,0,${p.o})`:`rgba(120,150,255,${p.o*0.55})`;cx.fill()});requestAnimationFrame(loop)})();
 
 function conf(){for(let i=0;i<26;i++){const d=document.createElement('div');d.style.cssText=`position:fixed;width:8px;height:8px;z-index:999;left:${innerWidth/2}px;top:${innerHeight/2}px;background:${['#ffd700','#ff9a3c','#4ade80','#6a8dff','#ff5c7a'][i%5]};pointer-events:none;border-radius:${i%2?'50%':'2px'}`;document.body.appendChild(d);const a=Math.random()*6.28,v=Math.random()*9+4;let x=0,y=0,vy=v,t=0;const iv=setInterval(()=>{t++;x+=Math.cos(a)*v;y-=vy;vy-=0.4;d.style.transform=`translate(${x}px,${y}px) rotate(${t*20}deg)`;d.style.opacity=1-t/28;if(t>28){d.remove();clearInterval(iv)}},16)}}
+
+setTimeout(()=>{const e=document.getElementById('introAd');if(e){e.style.transition='opacity .35s';e.style.opacity=0;setTimeout(()=>e.remove(),360)}},2000);
 </script>
 </body>
 </html>

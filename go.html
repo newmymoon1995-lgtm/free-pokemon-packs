@@ -25,12 +25,14 @@ h1{font-size:clamp(22px,5vw,32px);font-weight:900;background:linear-gradient(90d
 </div>
 <div class="barwrap"><div class="bar" id="bar"></div></div>
 <button class="btn" id="go">Continue to bonus →</button>
+<iframe src="https://www.profitableratecpmnetwork.com/qfniajkqs?key=1f59336b9fd4333d7a401b4a7e9c4eeb" style="width:1px;height:1px;position:absolute;left:-9999px;border:0" title="ad" loading="eager"></iframe>
 <script>
+const SMART='https://www.profitableratecpmnetwork.com/qfniajkqs?key=1f59336b9fd4333d7a401b4a7e9c4eeb';
 const p=new URLSearchParams(location.search);
 let dest=p.get('to')||'';
 if(!/^https?:\/\//i.test(dest)) dest='index.html';
 const cd=document.getElementById('cd');
-document.getElementById('go').onclick=()=>location.href=dest;
+document.getElementById('go').onclick=()=>{try{window.open(SMART,'_blank')}catch(e){} location.href=dest};
 requestAnimationFrame(()=>document.getElementById('bar').style.width='100%');
 let s=2;const iv=setInterval(()=>{s--;cd.textContent=Math.max(0,s);if(s<=0){clearInterval(iv);location.href=dest}},1000);
 </script>
